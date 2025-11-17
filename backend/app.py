@@ -18,6 +18,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'healthy', 'message': 'VCE Backend API is running'}), 200
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     try:
