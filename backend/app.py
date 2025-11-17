@@ -2,11 +2,19 @@ from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_cors import CORS  # Import Flask-CORS
 import os
+import sys
+
+print("Starting Flask app...", file=sys.stderr)
+print("Loading model...", file=sys.stderr)
+
 from modddel import model
 from predict import read_image_
 from predict import display_segmentation
 from PIL import Image
 from modddel import np
+
+print("Model loaded successfully!", file=sys.stderr)
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for your Flask app
 
