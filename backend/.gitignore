@@ -1,0 +1,19 @@
+# .gitignore for Backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+uploads/*
+!uploads/.gitkeep
+*.h5.tmp
+.env
+.venv
+venv/
+ENV/
+*.log
