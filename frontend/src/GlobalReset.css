@@ -1,0 +1,184 @@
+/* GlobalReset.css - Global CSS Reset to Fix Scrolling Issues */
+
+/* CRITICAL: Override any framework styles that prevent scrolling */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Force scrolling on HTML and BODY */
+html {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100% !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* Ensure React root element is scrollable */
+#root {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 100vh !important;
+    position: relative !important;
+}
+
+/* Remove any potential scroll blocks from containers */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* Bootstrap modal overrides - only block scroll when modal is open */
+body:not(.modal-open) {
+    overflow-y: auto !important;
+}
+
+/* Ensure main layout elements don't block scrolling */
+main,
+section,
+article,
+div[role="main"],
+.main-content {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* Router and navigation elements */
+div[data-testid="router-provider"],
+div[class*="router"],
+nav,
+.navbar {
+    overflow: visible !important;
+}
+
+/* Remove any position fixed that might interfere */
+.position-static {
+    position: static !important;
+}
+
+/* Utility class to force scrollable behavior */
+.force-scrollable {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-appearance: none) {
+    html,
+    body {
+        -webkit-overflow-scrolling: touch !important;
+    }
+}
+
+/* Mobile scrolling fixes */
+@media screen and (max-width: 768px) {
+    html,
+    body {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .container {
+        overflow-x: hidden !important;
+        overflow-y: visible !important;
+    }
+}
+
+/* Prevent horizontal scrolling but allow vertical */
+@media screen and (max-width: 576px) {
+    html {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(194, 239, 212, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #28a745, #145a32);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #145a32, #28a745);
+}
+
+/* Firefox scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #28a745 rgba(194, 239, 212, 0.2);
+}
+
+/* High contrast and accessibility */
+@media (prefers-contrast: high) {
+    ::-webkit-scrollbar-thumb {
+        background: #000000;
+        border: 1px solid #ffffff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Emergency reset for stubborn elements */
+.scroll-reset {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    position: relative !important;
+}
+
+/* Ensure no elements are accidentally position fixed */
+[style*="position: fixed"]:not(.navbar):not(.modal):not(.tooltip):not(.popover) {
+    position: relative !important;
+}
+
+/* Reset any transform that might interfere with scrolling */
+[style*="transform"]:not(:hover):not(:focus):not(.btn):not(.card):not(.modal) {
+    transform: none !important;
+}
